@@ -5,13 +5,15 @@ interface PreferenceState {
     selectedSubtopic: string;
     selectedLanguage: string;
     selectedDifficulty: string;
+    selectedNumQuestions: number;
 }
 
 const initialState: PreferenceState = {
     selectedTopic: "Mathematics",
     selectedSubtopic: "Algebra",
     selectedLanguage: "English",
-    selectedDifficulty: "Standard"
+    selectedDifficulty: "Standard",
+    selectedNumQuestions: 5
 }
 
 const preferenceSlice = createSlice({
@@ -30,10 +32,13 @@ const preferenceSlice = createSlice({
         },
         setLanguage(state, action) {
             state.selectedLanguage = action.payload
+        },
+        setSelectedNumQuestions(state, action) {
+            state.selectedNumQuestions = action.payload;
         }
     }
 });
 
-export const { setTopic, setSubtopic, setDifficulty, setLanguage } = preferenceSlice.actions
+export const { setTopic, setSubtopic, setDifficulty, setLanguage, setSelectedNumQuestions } = preferenceSlice.actions
 
 export default preferenceSlice.reducer;
